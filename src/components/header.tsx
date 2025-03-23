@@ -1,24 +1,27 @@
-import { cn } from "@/lib/utils";
-import { useAuth } from "@clerk/clerk-react";
-import { Cointener } from "./container";
-import { LogoContainer } from "./logo-container";
-import { NavigationRoutes } from "./navigation-routes";
-import { NavLink } from "react-router-dom";
-import { ProfileContainer } from "./profile-container";
-import { ToggleContainer } from "./toggle-container";
+import { cn } from "@/lib/utils"
+import { useAuth } from "@clerk/clerk-react"
+import { Container } from "./container"
+import { LogoContainer } from "./logo-container"
+import { NavigationRoutes } from "./navigation-routes"
+import { NavLink } from "react-router-dom"
+import { ProfileContainer } from "./profile-container"
+import { ToggleContainer } from "./toggle-container"
+
 const Header = () => {
-  const { userId } = useAuth(); // Fixed `useAuth` usage
+  const { userId } = useAuth();
 
   return (
-   <header 
-      className={cn("w-full border-b duration-150 transition-all ease-in-out")}
+    <header
+      className={cn(
+        "w-full border-b duration-150 transition-all ease-in-out"
+      )}
     >
-     <Cointener>
+      <Container>
         <div className="flex items-center gap-4 w-full">
-          {/* Logo Section */}
+          {/* Logo section */}
           <LogoContainer />
 
-          {/* Navigation Section */}
+          {/* Navigation section */}
           <nav className="hidden md:flex items-center gap-3">
             <NavigationRoutes />
             {userId && (
@@ -36,17 +39,18 @@ const Header = () => {
             )}
           </nav>
 
-          <div className="ml-auto flex-items-center gap-6">
-             {/* profile section*/}
-             <ProfileContainer />
+          {/* Profile section */}
+          <div className="ml-auto flex items-center gap-6">
+            {/* Profile section */}
+            <ProfileContainer/>
 
-             {/*mobile toggle section*/}
-             <ToggleContainer />
+            {/* mobile toggle section */}
+            <ToggleContainer />
           </div>
         </div>
-      </Cointener>
+      </Container>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
